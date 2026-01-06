@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My First Website</title>
+
+<style>
+/* RESET + BACKGROUND */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg,#667eea,#764ba2,#f093fb);
+  background-size: 400% 400%;
+  animation: bgMove 12s infinite;
+  color: #1f2937;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+}
+
+/* NAV */
+nav {
+  text-align: center;
+  padding: 10px;
+  background: linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+}
+
+nav a, #darkBtn {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: transparent;
+}
+
+nav a:hover, #darkBtn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* MAIN */
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* SECTIONS */
+section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+
+section:hover {
+  transform: translateY(-6px);
+}
+
+h2 {
+  background: linear-gradient(90deg,#ec4899,#8b5cf6,#22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* IMAGES */
+img {
+  max-width: 100%;
+  border-radius: 12px;
+  transition: 0.4s;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: linear-gradient(90deg,#f97316,#ec4899,#8b5cf6);
+  color: white;
+}
+
+/* DARK MODE */
+.dark {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.dark section {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+/* HIDE CLASS */
+.hidden {
+  display: none;
+}
+
+/* GAME */
+#game {
+  text-align: center;
+}
+
+#car {
+  max-width: 400px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+#car:active {
+  transform: scale(0.9) rotate(-2deg);
+}
+
+/* BUTTON */
+#lamboBtn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(90deg,#f97316,#ec4899);
+  color: white;
+  margin-bottom: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Welcome to My First Website</h1>
+  <p>This is my animated website with JavaScript.</p>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+  <button id="darkBtn" onclick="toggleDark()">🌙</button>
+</nav>
+
+<main>
+
+<button id="lamboBtn">Show Lamborghini</button>
+
+<section id="lamboSection" class="hidden">
+  <h2>Lamborghini Aventador</h2>
+  <img src="lambo.jpg" alt="Lamborghini">
+  <p>Italian supercar with a V12 engine and extreme performance.</p>
+</section>
+
+<section>
+  <h2>About Me</h2>
+  <img src="https://wallpapers.com/images/featured/4k-programming-3hcns7bt28muj7ih">
+  <p>Hello! My name is Dhyan. I am learning web development.</p>
+</section>
+
+<section>
+  <h2>Games</h2>
+  <div id="game">
+    <h3>🚗 Lambo Click Game</h3>
+    <p>Click the car as fast as you can!</p>
+    <h3>Score: <span id="score">0</span></h3>
+    <img id="car" src="lambo.jpg" onclick="hitCar()">
+  </div>
+</section>
+
+<section>
+  <h2>My Hobbies</h2>
+  <ul>
+    <li>Reading</li>
+    <li>Coding</li>
+    <li>Traveling</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2024 My First Website</p>
+</footer>
+
+<script>
+/* DARK MODE */
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+
+/* GAME */
+let score = 0;
+function hitCar() {
+  score++;
+  document.getElementById("score").innerText = score;
+}
+
+/* LAMBO TOGGLE */
+const lamboBtn = document.getElementById("lamboBtn");
+const lamboSection = document.getElementById("lamboSection");
+
+lamboBtn.addEventListener("click", () => {
+  lamboSection.classList.toggle("hidden");
+  lamboBtn.textContent = lamboSection.classList.contains("hidden")
+    ? "Show Lamborghini"
+    : "Hide Lamborghini";
+});
+</script>
+
+</body>
+</html>
